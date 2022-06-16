@@ -3,7 +3,6 @@ let reader;
 let inputDone;
 let inputStream;
 
-  
 async function connect(){
 
     let rect = document.getElementById('rect')
