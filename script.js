@@ -14,14 +14,18 @@ async function connect(){
     inputStream = decoder.readable;
     reader = inputStream.getReader();
 
+    console.log(decoder)
+
     while (true) {
+        
         const { value, done } = await reader.read();
-        rect.innerHTML = value.toString()
-        // "smoothing...pot output is super crazy, looks like bytes, but not, like 50, 500, 43, 430, 42, 420..."
-        if (value > 100 && value < 1000 ) {
+        console.log(value)
+        rect.innerHTML = value
+        
+        if (value) {
           rect.style.width = value.toString() + 'px'
-          
         }
+
         if (done) {
           reader.releaseLock();
           break;
