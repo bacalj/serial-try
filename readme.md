@@ -26,8 +26,8 @@ void loop()
 
 2. Once you have confirmed it's running on the arduino, close Arduino IDE to not complicate access to port. 
 
-3. Serve this page, e.g. `python3 -m https.server --cgi 8081` and vist it at the full localhost domain, eg. `http://localhost:8081/`. 
-_(if you go to the `https://[::]:8081/` url that python gives you it will not load the Serial API)_.
+3. Serve this page, e.g. `python3 -m http.server --cgi 8081` and vist it at the full localhost domain, eg. `http://localhost:8081/`. 
+_(if you go to the `http://[::]:8081/` url that python gives you it will not load the Serial API)_.
 
 4. Click "Connect to Serial".
 
@@ -91,3 +91,23 @@ void loop(){
 ## lets try passing options to TextDecoder
 
 https://encoding.spec.whatwg.org/#dom-textdecoder-encoding
+
+## 2 hours later
+
+OK, this stuff coming in as a `Unit8Array` and here is this: 
+
+```js
+
+// from https://stackoverflow.com/questions/39346517/convert-uint8arrayn-into-integer-in-node-js
+
+function convert(Uint8Arr) {
+    var length = Uint8Arr.length;
+
+    let buffer = Buffer.from(Uint8Arr);
+    var result = buffer.readUIntBE(0, length);
+
+    return result;
+}
+
+
+```
