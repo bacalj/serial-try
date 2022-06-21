@@ -22,6 +22,7 @@ async function connect(){
   console.log(portInfo)
 
   while (port.readable) {
+    /* to see full array, uncomment below and make it reader.read, not readero.read */
     //const reader = port.readable.getReader();
     decoder = new TextDecoderStream()
     rsClosed = port.readable.pipeTo(decoder.writable)
