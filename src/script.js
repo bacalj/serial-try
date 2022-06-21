@@ -22,23 +22,17 @@ async function connect(){
   console.log(portInfo)
 
   while (port.readable) {
-    /* to see full array, uncomment below and make it reader.read, not readero.read */
-    //const reader = port.readable.getReader();
     decoder = new TextDecoderStream()
     rsClosed = port.readable.pipeTo(decoder.writable)
     readero = decoder.readable.getReader()
 
     try {
       while (true) {
-        const stuff = await readero.read();
-        if (stuff.done) {
+        const { done, value } = await readero.read();
+        if (done) {
           break;
         }
-        console.log(stuff)
-        /* this is really a Unit8Array 
-           Uint8Array(4) [53, 48, 13, 10, buffer: ArrayBuffer(4), byteLength: 4, byteOffset: 0, length: 4, Symbol(Symbol.toStringTag): 'Uint8Array']
-        */
-
+        console.log(value)
       }
     } 
     
