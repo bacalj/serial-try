@@ -111,3 +111,36 @@ function convert(Uint8Arr) {
 
 
 ```
+
+well this is interesting output (at this commit) so we are closer, but now I am going to reach for an npm module
+
+```js
+{length: 1, apparent_value: '6'}
+script.js:23 {length: 3, apparent_value: '1\r\n'}
+script.js:23 {length: 2, apparent_value: '11'}
+script.js:23 {length: 3, apparent_value: '0\r\n'}
+script.js:23 {length: 3, apparent_value: '117'}
+script.js:23 {length: 2, apparent_value: '\r\n'}
+script.js:23 {length: 4, apparent_value: '105\r'}
+script.js:23 {length: 1, apparent_value: '\n'}
+script.js:23 {length: 1, apparent_value: '9'}
+script.js:23 {length: 3, apparent_value: '0\r\n'}
+script.js:23 {length: 3, apparent_value: '71\r'}
+script.js:23 {length: 1, apparent_value: '\n'}
+script.js:23 {length: 4, apparent_value: '52\r\n'}
+script.js:23 {length: 1, apparent_value: '6'}
+script.js:23 {length: 3, apparent_value: '4\r\n'}
+script.js:23 {length: 2, apparent_value: '74'}
+script.js:23 {length: 2, apparent_value: '\r\n'}
+script.js:23 {length: 3, apparent_value: '66\r'}
+script.js:23 {length: 1, apparent_value: '\n'}
+script.js:23 {length: 1, apparent_value: '7'}
+script.js:23 {length: 3, apparent_value: '6\r\n'}
+script.js:23 {length: 2, apparent_value: '90'}
+script.js:23 {length: 2, apparent_value: '\r\n'}
+script.js:23 {length: 3, apparent_value: '83\r'}
+script.js:23 {length: 1, apparent_value: '\n'}
+script.js:23 {length: 4, apparent_value: '85\r\n'}
+script.js:23 {length: 2, apparent_value: '80'}
+script.js:23 {length: 2, apparent_value: '\r\n'}
+```
