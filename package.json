@@ -6,6 +6,7 @@
     "build": "parcel build"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "parcel": "latest"
   }
 }
