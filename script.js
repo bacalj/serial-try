@@ -6,10 +6,12 @@ let inputStream;
 async function connect(){
 
     let rect = document.getElementById('rect')
-    console.log(navigator)
+    console.log(navigator.serial)
     port = await navigator.serial.requestPort()
     await port.open({ baudRate: 9600 }).catch((e) => console.log(e))
 
+    //let decoder = new TextDecoderStream()
+    //let decoder = new TextDecoderStream("utf-8", { ignoreBOM: true });
     let decoder = new TextDecoderStream();
     inputDone = port.readable.pipeTo(decoder.writable);
     inputStream = decoder.readable;
@@ -28,6 +30,7 @@ async function connect(){
         }
 
         if (done) {
+          console.log('done')
           reader.releaseLock();
           break;
         }
