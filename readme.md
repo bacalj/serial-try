@@ -144,3 +144,33 @@ script.js:23 {length: 4, apparent_value: '85\r\n'}
 script.js:23 {length: 2, apparent_value: '80'}
 script.js:23 {length: 2, apparent_value: '\r\n'}
 ```
+
+hmmm
+ok, now at this commit output is: 
+
+```js
+(2) ['8', '5']
+script.js:28 (2) ['\r', '\n']
+script.js:28 (3) ['8', '0', '\r']
+script.js:28 ['\n']
+script.js:28 ['8']
+script.js:28 (3) ['2', '\r', '\n']
+script.js:28 (2) ['7', '9']
+script.js:28 (2) ['\r', '\n']
+script.js:28 (3) ['7', '7', '\r']
+```
+
+see how we are missing, I think, the "stop bits"?
+If we were to smoosh it all together and parse that, 
+we can see a sensible stream
+
+rn 
+80 
+rn 
+82 
+rn 
+79 
+rn 
+77 
+
+//maybe array breaks are because it doesn't know how long each array is, lets add our length in again
