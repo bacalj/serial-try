@@ -6,6 +6,7 @@ let inputStream;
 async function connect(){
 
     let rect = document.getElementById('rect')
+    console.log(navigator)
     port = await navigator.serial.requestPort()
     await port.open({ baudRate: 9600 }).catch((e) => console.log(e))
 
