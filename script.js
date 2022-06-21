@@ -3,12 +3,23 @@ let reader;
 let inputDone;
 let inputStream;
 
-function niceIt(Uint8Arr) {
-  const len = Uint8Arr.length
-  const val = Uint8Arr
-  return { length: len, apparent_value: val }
-  // const length = Uint8Arr.length;
-  // return length;
+function niceIt(u8) {
+  const asArr =  Array.from(u8)
+  const len = u8.length
+  // const asBuff = new ArrayBuffer(8) //maybe this should use length?
+  // // console.log(asBuff)
+  // // // const len = Uint8Arr.length
+  // // // const val = Uint8Arr
+  // // // return { length: len, apparent_value: val }
+  // // // // const length = Uint8Arr.length;
+  // // // // return length;
+  // const ya = new TextDecoder("utf-8").decode(asBuff);
+  // return ya
+  //return { arr: asArr, length: len }
+  const buffer = new ArrayBuffer(8);
+  const int8View = new Int16Array(buffer);
+  return int8View
+
 }
 
 function readOne(reader){
