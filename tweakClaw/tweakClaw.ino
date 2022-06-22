@@ -32,7 +32,7 @@
   int lastSensitivitiesIndex = 2;             //set initial sensitivity index
   
   int emgSaturationValue = 0;                 //selected sensitivity/EMG saturation value
-  int analogReadings = 0;                       //measured value for EMG
+  int analogReadings;                       //measured value for EMG
   byte ledbarHeight = 0;                      //temporary variable for led bar height
   
   unsigned long oldTime = 0;                  //timestamp of last servo angle update (ms)
@@ -154,7 +154,6 @@
     
         analogReadings = analogRead(A0);//read EMG value from analog input A0
         
-        
         //---------------------- Show EMG strength on LED ------------------------------------------
         
         //turn OFF all LEDs on LED bar
@@ -172,9 +171,6 @@
         {
           digitalWrite(ledPins[k], HIGH);
         }
-   
-        // send string to serial so browser can use
-        Serial.println(String(analogReadings));
 
         //-------------------- Drive Claw according to EMG strength -----------------------------
         
@@ -201,6 +197,9 @@
               }
               oldTime = millis();
               oldDegrees = newDegree;
+
+              // seems like the right shape at this point
+              Serial.print(String(analogReadings));
         }
 }
 

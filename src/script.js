@@ -34,10 +34,11 @@ async function connect(){
     try {
       while (true) {
 
-        const obj = await readero.read();
-        console.log(obj)
+        // const { value, done } = await readero.read();
+        // console.log(value)
 
-        // const { done, value } = await readero.read();
+        const stuff = await readero.read();
+        console.log(stuff)
         // if (done) {
         //   break;
         // }
