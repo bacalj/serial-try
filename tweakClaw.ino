@@ -51,6 +51,8 @@
   //   Setup servo, inputs and outputs
   // ----------------------------------------------------------------------------------
   void setup(){
+
+    Serial.begin(9600);
     //init servo
     Gripper.attach(SERVO_PIN); 
     
@@ -80,7 +82,7 @@
   // ----------------------------------------------------------------------------------
   void loop()
   {
-   
+        Serial.println(3);
         //-----------------------  Switch sensitivity ------------------------------------
     
         //check if button is pressed (HIGH)
