@@ -82,7 +82,6 @@
   // ----------------------------------------------------------------------------------
   void loop()
   {
-        Serial.println(3);
         //-----------------------  Switch sensitivity ------------------------------------
     
         //check if button is pressed (HIGH)
@@ -191,6 +190,9 @@
                 analogReadings = constrain(analogReadings, 120, emgSaturationValue);
                 newDegree = map(analogReadings, 120 ,emgSaturationValue, 105, 190);
               }
+
+              // send string to serial so browser can use
+              Serial.println(String(analogReadings));
           
               //check if we are in servo dead zone
               if(abs(newDegree-oldDegrees) > GRIPPER_MINIMUM_STEP)
