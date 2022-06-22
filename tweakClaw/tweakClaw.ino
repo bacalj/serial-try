@@ -174,7 +174,7 @@
         }
    
         // send string to serial so browser can use
-        Serial.println(analogReadings);
+        Serial.println(String(analogReadings));
 
         //-------------------- Drive Claw according to EMG strength -----------------------------
         
