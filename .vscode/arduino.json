@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
     "port": "/dev/tty.usbmodem1101",
-    "sketch": "tweakClaw.ino"
+    "sketch": "tweakClaw/tweakClaw.ino"
 }

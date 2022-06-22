@@ -36,7 +36,7 @@ async function connect(){
           break;
         }
         bar.innerHTML = value
-        bar.style.width = value + 'px'
+        bar.style.width = `${value * 1.5}px`
         console.log(value)
       }
     } 
