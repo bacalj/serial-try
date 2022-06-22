@@ -3,9 +3,12 @@ let readableStream;
 let decoder;
 let rsClosed;
 let readero;
+let bar;
+let btn;
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  var btn = document.getElementById('connect')
+  btn = document.getElementById('connect')
+  bar = document.getElementById('rect')
   btn.addEventListener('click', function(e){
     e.preventDefault()
     connect()
@@ -32,6 +35,8 @@ async function connect(){
         if (done) {
           break;
         }
+        bar.innerHTML = value
+        bar.style.width = value + 'px'
         console.log(value)
       }
     } 
@@ -41,7 +46,7 @@ async function connect(){
     } 
     
     finally {
-      reader.releaseLock();
+      readero.releaseLock();
     }
   }
 }
