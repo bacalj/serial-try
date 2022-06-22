@@ -118,3 +118,50 @@ void loop(){
 ```
 
 10. You can now edit and upload sketches right from VSC via the extension, so tweak is in a real file `tweakClaw.ino` and in git now
+
+## 1
+
+```c++
+Serial.print(analogReadings);
+```
+yields
+```js
+{value: '9383', done: false}
+{value: '8383', done: false}
+{value: '7363', done: false}
+{value: '6363', done: false}
+```
+
+## 2
+
+```c++
+Serial.println(analogReadings);
+```
+yields
+```js
+
+```
+
+## 3
+
+```c++
+Serial.print(String(analogReadings));
+```
+yields
+```js
+
+```
+
+## 4
+
+```c++
+Serial.write(analogReadings);
+```
+yields
+```js
+{value: '?>>=', done: false}
+{value: '=<<<', done: false}
+{value: ';;;:', done: false}
+{value: ':999', done: false}
+{value: '9988', done: false}
+```

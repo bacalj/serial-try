@@ -29,17 +29,21 @@ async function connect(){
     rsClosed = port.readable.pipeTo(decoder.writable)
     readero = decoder.readable.getReader()
 
-    const reader = port.readable.getReader();
+    //const reader = port.readable.getReader();
 
     try {
       while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-          break;
-        }
-        bar.innerHTML = value
-        bar.style.width = `${value * 1.5}px`
-        console.log(value)
+
+        const obj = await readero.read();
+        console.log(obj)
+
+        // const { done, value } = await readero.read();
+        // if (done) {
+        //   break;
+        // }
+        // bar.innerHTML = value
+        // bar.style.width = `${value * 1.5}px`
+        // console.log(value)
       }
     } 
     
