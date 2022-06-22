@@ -29,9 +29,11 @@ async function connect(){
     rsClosed = port.readable.pipeTo(decoder.writable)
     readero = decoder.readable.getReader()
 
+    const reader = port.readable.getReader();
+
     try {
       while (true) {
-        const { done, value } = await readero.read();
+        const { done, value } = await reader.read();
         if (done) {
           break;
         }
@@ -50,27 +52,4 @@ async function connect(){
     }
   }
 }
-
-
-
-
-// function rXeadOne(){
-//   reader.read().then(({ done, value }) => {
-//       console.log(Array.from(value))
-//       readOne()
-//   })
-// }
-
-// async function cXonnect(){
-
-    
-//     await port.open({ baudRate: 9600 }).catch((e) => console.log(e))
-   
-//     let decoder = new TextDecoderStream();
-//     inputDone = port.readable.pipeTo(decoder.writable);
-//     inputStream = decoder.readable;
-//     reader = inputStream.getReader();
-
-//     readOne()
-// }
 
