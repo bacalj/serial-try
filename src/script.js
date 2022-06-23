@@ -5,10 +5,13 @@ let promiseToBeClosed;
 let streamReader;
 let bar;
 let btn;
+let listo;
+let cleaned = []
 
 window.addEventListener('DOMContentLoaded', (event) => {
   btn = document.getElementById('connect')
   bar = document.getElementById('rect')
+  listo = document.getElementById('listo')
   btn.addEventListener('click', function(e){
     e.preventDefault()
     connect()
@@ -53,5 +56,15 @@ async function handleReadableStream(port){
 
 
 function handleStreamObj(val){
-  console.log(val)
+  /* 
+    innerHTML side effect cleans out invisible or misinterpretable chars 
+    (those reflected in value.length, yet not printable via value.charAt[x]) 
+    also visible as "random" line breaks in console 
+  */
+  listo.innerHTML += val
+  cleaned = listo.innerHTML.split('\n')
+    .map( x => parseInt(x))
+    .filter( n => !isNaN(n))
+    
+  console.log(cleaned)
 }
