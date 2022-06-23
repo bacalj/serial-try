@@ -60,11 +60,15 @@ function handleStreamObj(val){
     innerHTML side effect cleans out invisible or misinterpretable chars 
     (those reflected in value.length, yet not printable via value.charAt[x]) 
     also visible as "random" line breaks in console 
+
+    There must be a more pragmatic, not-a-side-effect way to clean it, but
+    this works for the moment
+
   */
   listo.innerHTML += val
   cleaned = listo.innerHTML.split('\n')
     .map( x => parseInt(x))
     .filter( n => !isNaN(n))
-    
+
   console.log(cleaned)
 }
