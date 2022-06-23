@@ -1,8 +1,8 @@
 let port;
 let readableStream;
-let decoder;
-let rsClosed;
-let readero;
+let textDecoder;
+let promiseToBeClosed;
+let streamReader;
 let bar;
 let btn;
 
@@ -15,36 +15,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
   })
 });
 
-
 async function connect(){
-
   port = await navigator.serial.requestPort() 
   await port.open({ baudRate: 9600 }).catch((e) => console.log(e))
 
   portInfo = port.getInfo()
   console.log(portInfo)
 
+  parseDataFromPort(port)
+}
+
+async function parseDataFromPort(port){
   while (port.readable) {
-    decoder = new TextDecoderStream()
-    rsClosed = port.readable.pipeTo(decoder.writable)
-    readero = decoder.readable.getReader()
-
-    //const reader = port.readable.getReader();
-
+    textDecoder = new TextDecoderStream()
+    promiseToBeClosed = port.readable.pipeTo(textDecoder.writable)
+    streamReader = textDecoder.readable.getReader()
+    
     try {
       while (true) {
-
-        // const { value, done } = await readero.read();
-        // console.log(value)
-
-        const stuff = await readero.read();
-        console.log(stuff)
-        // if (done) {
-        //   break;
-        // }
-        // bar.innerHTML = value
-        // bar.style.width = `${value * 1.5}px`
-        // console.log(value)
+        const serialDataObj = await streamReader.read();
+        handleStreamObj(serialDataObj)
       }
     } 
     
@@ -53,8 +43,12 @@ async function connect(){
     } 
     
     finally {
-      readero.releaseLock();
+      streamReader.releaseLock();
     }
   }
 }
 
+
+function handleStreamObj(obj){
+  console.log(obj)
+}

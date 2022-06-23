@@ -199,7 +199,7 @@
               oldDegrees = newDegree;
 
               // seems like the right shape at this point
-              Serial.print(String(analogReadings));
+              Serial.println(analogReadings);
         }
 }
 
