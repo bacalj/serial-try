@@ -69,6 +69,12 @@ function handleStreamObj(val){
   cleaned = listo.innerHTML.split('\n')
     .map( x => parseInt(x))
     .filter( n => !isNaN(n))
-
   console.log(cleaned)
+
+  /*
+      NOTE: weridly, doing below returns incorrect numbers - 
+      lone single digits that are meant to be in 10s place
+      `const single = cleaned.pop()
+      console.log(single)`
+  */
 }
