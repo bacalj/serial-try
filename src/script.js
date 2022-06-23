@@ -22,10 +22,10 @@ async function connect(){
   portInfo = port.getInfo()
   console.log(portInfo)
 
-  parseDataFromPort(port)
+  handleReadableStream(port)
 }
 
-async function parseDataFromPort(port){
+async function handleReadableStream(port){
   while (port.readable) {
     textDecoder = new TextDecoderStream()
     promiseToBeClosed = port.readable.pipeTo(textDecoder.writable)
@@ -33,8 +33,11 @@ async function parseDataFromPort(port){
     
     try {
       while (true) {
-        const serialDataObj = await streamReader.read();
-        handleStreamObj(serialDataObj)
+        const { value, done } = await streamReader.read();
+        if (done){
+          break
+        }
+        handleStreamObj(value)
       }
     } 
     
@@ -49,6 +52,6 @@ async function parseDataFromPort(port){
 }
 
 
-function handleStreamObj(obj){
-  console.log(obj)
+function handleStreamObj(val){
+  console.log(val)
 }
