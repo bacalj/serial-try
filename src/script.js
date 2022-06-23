@@ -57,15 +57,15 @@ async function handleReadableStream(port){
 
 function handleStreamObj(val){
   /* 
-    innerHTML side effect cleans out invisible or misinterpretable chars 
-    (those reflected in value.length, yet not printable via value.charAt[x]) 
-    also visible as "random" line breaks in console 
-
-    There must be a more pragmatic, not-a-side-effect way to clean it, but
-    this works for the moment
-
+    appending val to innerHTML has side effect of removing misinterpretable chars 
+    (those reflected in value.length, yet not printable via value.charAt[x] and 
+    also visible as "random" line breaks in console)
   */
   listo.innerHTML += val
+
+  /*
+      if dataflow can watch this value perhaps...
+  */
   cleaned = listo.innerHTML.split('\n')
     .map( x => parseInt(x))
     .filter( n => !isNaN(n))
