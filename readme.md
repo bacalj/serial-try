@@ -40,4 +40,23 @@ $ npm run start
 
 7. See results on page and visit console.
 
-WIP
+```js
+
+let buffer = "";
+
+function handleStreamObj(val){
+
+  const regex = /(\d+)\\r\\n/;
+
+  buffer += val;
+
+  const match = regex.exec(buffer);
+  if (match?.[1]) {
+    console.log(match[1]);
+    buffer = buffer.substring(match[0].length);
+  }
+
+
+}
+
+```
