@@ -56,25 +56,12 @@ async function handleReadableStream(port){
 
 
 function handleStreamObj(val){
-  /* 
-    appending val to innerHTML has side effect of removing misinterpretable chars 
-    (those reflected in value.length, yet not printable via value.charAt[x] and 
-    also visible as "random" line breaks in console)
-  */
+  console.log(Array.from(val))
   listo.innerHTML += val
 
-  /*
-      if dataflow can watch this value perhaps...
-  */
   cleaned = listo.innerHTML.split('\n')
     .map( x => parseInt(x))
     .filter( n => !isNaN(n))
-  console.log(cleaned)
+  //console.log(cleaned)
 
-  /*
-      NOTE: weridly, doing below returns incorrect numbers - 
-      lone single digits that are meant to be in 10s place
-      `const single = cleaned.pop()
-      console.log(single)`
-  */
 }

@@ -24,5 +24,5 @@ void loop(){
   finalReading = constrain(finalReading, 0, MAX);
 
   /* output strings for browser's sake - no newline not so nice on arduino side */
-  Serial.print(String(finalReading));
+  Serial.println(String(finalReading));
 }
