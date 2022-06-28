@@ -5,12 +5,10 @@ let promiseToBeClosed;
 let streamReader;
 let bar;
 let btn;
-let listo;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   btn = document.getElementById('connect')
   bar = document.getElementById('rect')
-  listo = document.getElementById('listo')
   btn.addEventListener('click', function(e){
     e.preventDefault()
     connect()
