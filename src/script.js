@@ -6,7 +6,6 @@ let streamReader;
 let bar;
 let btn;
 let listo;
-let cleaned = []
 
 window.addEventListener('DOMContentLoaded', (event) => {
   btn = document.getElementById('connect')
