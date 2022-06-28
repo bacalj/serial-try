@@ -54,27 +54,21 @@ async function handleReadableStream(port){
   }
 }
 
+let localBuffer = ''
 
 function handleStreamObj(val){
-  /* 
-    appending val to innerHTML has side effect of removing misinterpretable chars 
-    (those reflected in value.length, yet not printable via value.charAt[x] and 
-    also visible as "random" line breaks in console)
-  */
-  listo.innerHTML += val
+  localBuffer+= val
 
-  /*
-      if dataflow can watch this value perhaps...
-  */
-  cleaned = listo.innerHTML.split('\n')
-    .map( x => parseInt(x))
-    .filter( n => !isNaN(n))
-  console.log(cleaned)
+  /* any number of digits followed by a carriage return and a newline */
+  const pattern = /([0-9]+)[\r][\n]/g
 
-  /*
-      NOTE: weridly, doing below returns incorrect numbers - 
-      lone single digits that are meant to be in 10s place
-      `const single = cleaned.pop()
-      console.log(single)`
-  */
+  /* an array that includes [{the whole match}, {the captured string we want}] */
+  const match = pattern.exec(localBuffer)
+
+  if (match){
+    /* remove our current match from the end of the buffer */
+    localBuffer = localBuffer.substring(0, localBuffer.length - match[0].length)
+    const nice = match[1]
+    console.log(nice)
+  }
 }
